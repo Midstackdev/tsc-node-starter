@@ -1,0 +1,18 @@
+{
+  "name": "tsc.pg.node",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:Midstackdev/tsc-node-starter.git",
+  "author": "Midstackdev <midstackdev@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build": "tsc",
+    "start": "yarn run build && node dist/index.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.7.0",
+    "typescript": "^4.6.3"
+  }
+}
