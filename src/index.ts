@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import errorMiddleware from './middlewares/error.middleware';
 
 const PORT = 5000;
 
@@ -30,6 +31,14 @@ app.post('/', (req: Request, res: Response) => {
 app.get('/', (req: Request, res: Response) => {
   res.json({
     message: 'Hello World',
+  });
+});
+
+app.use(errorMiddleware);
+
+app.use((_req: Request, res: Response) => {
+  res.status(404).json({
+    message: 'Not found!, read the API documentation to find your way',
   });
 });
 
