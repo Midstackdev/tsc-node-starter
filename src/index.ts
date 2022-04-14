@@ -3,8 +3,9 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import errorMiddleware from './middlewares/error.middleware';
+import config from './config';
 
-const PORT = 5000;
+const PORT = config.port;
 
 const app: Application = express();
 
