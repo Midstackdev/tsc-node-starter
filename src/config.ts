@@ -17,7 +17,7 @@ export default {
   port: PORT || 5000,
   host: POSTGRES_HOST,
   dbPort: POSTGRES_PORT,
-  dbName: NODE_ENV === 'development' ? POSTGRES_DB : POSTGRES_DB_TEST,
+  dbName: NODE_ENV === 'dev' ? POSTGRES_DB : POSTGRES_DB_TEST,
   dbUser: POSTGRES_USER,
   dbPassword: POSTGRES_PASSWORD,
 };
