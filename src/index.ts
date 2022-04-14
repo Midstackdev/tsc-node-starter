@@ -4,6 +4,7 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import errorMiddleware from './middlewares/error.middleware';
 import config from './config';
+import db from './database';
 
 const PORT = config.port;
 
@@ -33,6 +34,19 @@ app.get('/', (req: Request, res: Response) => {
   res.json({
     message: 'Hello World',
   });
+});
+
+db.connect().then((client) => {
+  return client
+    .query('SELECT NOW()')
+    .then((res) => {
+      client.release();
+      console.log(res.rows);
+    })
+    .catch((err) => {
+      client.release();
+      console.log(err.stack);
+    });
 });
 
 app.use(errorMiddleware);
